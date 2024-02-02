@@ -1,4 +1,5 @@
 import "./App.scss";
+import Player from "./components/Player";
 
 function App() {
   return (
@@ -6,14 +7,13 @@ function App() {
       <div id="game">
         <ol id="players">
           <li>
-            <span className="player-name">Player 1</span>
-            <span className="player-symbol">X</span>
+            <Player playerName={"Gracz 1"} playerSymbol={"X"} />
           </li>
           <li>
-            <span className="player-name">Player 2</span>
-            <span className="player-symbol">O</span>
+            <Player playerName={"Gracz 2"} playerSymbol={"O"} />
           </li>
         </ol>
+        Plansza gry
       </div>
       <p>Logi z gry</p>
     </main>
