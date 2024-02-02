@@ -27,8 +27,8 @@ function Player({ playerName, playerSymbol }) {
 
   return (
     <span className="player">
-      {player}
       <span className="player-symbol">{playerSymbol}</span>
+      {player}
       <button className={isActive ? "active" : ""} onClick={handleEditClick}>
         {isEditing ? "Zapisz" : "Edytuj"}
       </button>

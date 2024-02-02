@@ -1,10 +1,9 @@
 * {
-  box-sizing: border-box;
-}
-
-body {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+body {
   height: 100%;
   width: 100%;
   display: flex;
@@ -16,23 +15,23 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-attachment: fixed;
-  background: rgb(47, 43, 64);
+  background: rgb(78, 65, 99);
   background: -moz-linear-gradient(
     90deg,
-    rgba(47, 43, 64, 1) 27%,
-    rgba(104, 94, 140, 1) 100%
+    rgba(78, 65, 99, 1) 0%,
+    rgba(91, 84, 119, 1) 100%
   );
   background: -webkit-linear-gradient(
     90deg,
-    rgba(47, 43, 64, 1) 27%,
-    rgba(104, 94, 140, 1) 100%
+    rgba(78, 65, 99, 1) 0%,
+    rgba(91, 84, 119, 1) 100%
   );
   background: linear-gradient(
     90deg,
-    rgba(47, 43, 64, 1) 27%,
-    rgba(104, 94, 140, 1) 100%
+    rgba(78, 65, 99, 1) 0%,
+    rgba(91, 84, 119, 1) 100%
   );
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#2f2b40",endColorstr="#685e8c",GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#4e4163",endColorstr="#5b5477",GradientType=1);
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
       monospace;
