@@ -2,10 +2,21 @@ import "./App.scss";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header"></header>
-      {/* Tutaj będziemy dodawać kolejne elementy naszej gry, jak plansza czy przyciski do sterowania */}
-    </div>
+    <main>
+      <div id="game">
+        <ol id="players">
+          <li>
+            <span className="player-name">Player 1</span>
+            <span className="player-symbol">X</span>
+          </li>
+          <li>
+            <span className="player-name">Player 2</span>
+            <span className="player-symbol">O</span>
+          </li>
+        </ol>
+      </div>
+      <p>Logi z gry</p>
+    </main>
   );
 }
 
