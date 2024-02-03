@@ -1,6 +1,7 @@
 import "./App.scss";
 import Player from "./components/Player";
 import BackgroundAnimation from "./components/BackgroundAnimation";
+import TicTacToeBoard from "./components/TicTacToeBoard";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
               <Player playerName={"Gracz 2"} playerSymbol={"O"} />
             </li>
           </ol>
-          Plansza gry
+          <TicTacToeBoard />
         </div>
         <p>Logi z gry</p>
       </main>

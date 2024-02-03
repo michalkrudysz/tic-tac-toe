@@ -130,6 +130,74 @@ main {
         }
       }
     }
+
+    #tic-tac-toe-board {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      padding-top: 1em;
+      padding-bottom: 1em;
+
+      ol {
+        display: flex;
+      }
+
+      li {
+        display: flex;
+
+        div {
+          margin-right: 10px;
+        }
+
+        button {
+          width: 3.5em;
+          height: 3.5em;
+          border: 0.1em solid #9a8fbf;
+          color: #2c1b07;
+          font-size: 2.2em;
+          background-color: transparent;
+          outline: none;
+          cursor: pointer;
+          transition: box-shadow 0.5s ease-in-out;
+        }
+        button:hover {
+          overflow: hidden;
+          -webkit-box-shadow: -9px 3px 67px 15px rgba(154, 143, 191, 1);
+          -moz-box-shadow: -9px 3px 67px 15px rgba(154, 143, 191, 1);
+          box-shadow: -9px 3px 67px 15px rgba(154, 143, 191, 1);
+        }
+
+        @for $i from 0 through 8 {
+          .cell-#{$i} {
+            @if $i == 0 {
+              border-left: none;
+              border-top: none;
+            } @else if $i == 1 {
+              border-top: none;
+            } @else if $i == 2 {
+              border-top: none;
+              border-right: none;
+            } @else if $i == 3 {
+              border-left: none;
+            } @else if $i == 5 {
+              border-right: none;
+            } @else if $i == 6 {
+              border-left: none;
+              border-bottom: none;
+            } @else if $i == 7 {
+              border-bottom: none;
+            } @else if $i == 8 {
+              border-bottom: none;
+              border-right: none;
+            }
+          }
+        }
+      }
+
+      li:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 }
 
@@ -150,6 +218,7 @@ footer {
   box-shadow: 1px -10px 24px 0px rgba(66, 68, 90, 1);
 }
 
+//Animated symbols styling
 .symbol {
   z-index: -3;
   position: fixed;
