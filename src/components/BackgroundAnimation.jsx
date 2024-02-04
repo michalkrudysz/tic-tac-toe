@@ -19,7 +19,6 @@ function FloatingSymbol({ symbol, index }) {
       });
     };
 
-    // Wywołanie funkcji natychmiast po montowaniu, aby rozpocząć animację.
     updatePosition();
 
     const intervalId = setInterval(updatePosition, 10000);
@@ -38,7 +37,7 @@ function FloatingSymbol({ symbol, index }) {
   const style = {
     left: `${position.x}px`,
     top: `${position.y}px`,
-    transition: "left 10s linear, top 10s linear", // Usunięcie transform z transition, ponieważ nie jest używany
+    transition: "left 10s linear, top 10s linear", 
   };
 
   return (

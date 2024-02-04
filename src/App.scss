@@ -158,8 +158,16 @@ main {
           background-color: transparent;
           outline: none;
           cursor: pointer;
-          transition: box-shadow 0.5s ease-in-out;
+          transition: box-shadow 0.3s ease-in-out;
+
+          -webkit-tap-highlight-color: transparent;
+
+          &:focus {
+            outline: none;
+            box-shadow: none;
+          }
         }
+
         button:hover {
           overflow: hidden;
           -webkit-box-shadow: -9px 3px 67px 15px rgba(154, 143, 191, 1);
