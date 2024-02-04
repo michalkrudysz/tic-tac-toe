@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Player({ playerName, playerSymbol }) {
+function Player({ playerName, playerSymbol, isActivePlayer }) {
   const [isEditing, setIsEditing] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const [editableName, setEditableName] = useState(playerName);
@@ -26,7 +26,7 @@ function Player({ playerName, playerSymbol }) {
   }
 
   return (
-    <span className="player">
+    <span className={`player ${isActivePlayer ? "active" : ""}`}>
       <span className="player-symbol">{playerSymbol}</span>
       {player}
       <button className={isActive ? "active" : ""} onClick={handleEditClick}>

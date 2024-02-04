@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function TicTacToeBoard() {
+export default function TicTacToeBoard({ onSelectSquare, activePlayer }) {
   const initialTicTacToeBoard = [
     [null, null, null],
     [null, null, null],
@@ -11,8 +11,11 @@ export default function TicTacToeBoard() {
 
   function handleSelectSquare(rowIndex, cellIndex) {
     const updatedTicTacToeBoard = ticTacToeBoard.map((row) => [...row]);
-    updatedTicTacToeBoard[rowIndex][cellIndex] = "X";
-    setTicTacToeBoard(updatedTicTacToeBoard);
+    if (updatedTicTacToeBoard[rowIndex][cellIndex] === null) {
+      updatedTicTacToeBoard[rowIndex][cellIndex] = activePlayer;
+      setTicTacToeBoard(updatedTicTacToeBoard);
+      onSelectSquare();
+    }
   }
 
   return (
