@@ -4,7 +4,8 @@ function Log({ gameTurns }) {
       <h2>Historia gry</h2>
       {gameTurns.map((turn, index) => (
         <li key={index}>
-          Gracz {turn.player} postawił znak na polu: {turn.row}, {turn.cell}
+          Gracz {turn.player} postawił znak na polu: {turn.square.row},{" "}
+          {turn.square.col}
         </li>
       ))}
     </ol>

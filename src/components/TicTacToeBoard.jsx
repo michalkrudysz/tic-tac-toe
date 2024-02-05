@@ -1,26 +1,19 @@
-import { useState } from "react";
-
-export default function TicTacToeBoard({ onSelectSquare, activePlayer }) {
+export default function TicTacToeBoard({ onSelectSquare, turns }) {
   const initialTicTacToeBoard = [
     [null, null, null],
     [null, null, null],
     [null, null, null],
   ];
 
-  const [ticTacToeBoard, setTicTacToeBoard] = useState(initialTicTacToeBoard);
-
-  function handleSelectSquare(rowIndex, cellIndex) {
-    const updatedTicTacToeBoard = ticTacToeBoard.map((row) => [...row]);
-    if (updatedTicTacToeBoard[rowIndex][cellIndex] === null) {
-      updatedTicTacToeBoard[rowIndex][cellIndex] = activePlayer;
-      setTicTacToeBoard(updatedTicTacToeBoard);
-      onSelectSquare(rowIndex, cellIndex);
-    }
+  for (const turn of turns) {
+    const { square, player } = turn;
+    const { row, col } = square;
+    initialTicTacToeBoard[row][col] = player;
   }
 
   return (
     <ol id="tic-tac-toe-board">
-      {ticTacToeBoard.map((row, rowIndex) => (
+      {initialTicTacToeBoard.map((row, rowIndex) => (
         <li key={rowIndex}>
           <ol>
             {row.map((cell, cellIndex) => {
@@ -29,7 +22,8 @@ export default function TicTacToeBoard({ onSelectSquare, activePlayer }) {
                 <li key={cellIndex}>
                   <button
                     className={id}
-                    onClick={() => handleSelectSquare(rowIndex, cellIndex)}
+                    onClick={() => onSelectSquare(rowIndex, cellIndex)}
+                    disabled={cell != null}
                   >
                     {cell}
                   </button>

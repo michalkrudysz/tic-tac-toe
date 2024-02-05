@@ -6,17 +6,33 @@ import Log from "./components/Log";
 import { useState } from "react";
 
 function App() {
-  const [activePlayer, setActivePlayer] = useState("X");
   const [gameTurns, setGameTurns] = useState([]);
+  const [activePlayer, setActivePlayer] = useState("X");
 
-  function handleSelectSquare(rowIndex, cellIndex) {
-    setGameTurns((prevTurns) => [
-      ...prevTurns,
-      { player: activePlayer, row: rowIndex, cell: cellIndex },
-    ]);
+  function handleSelectSquare(rowIndex, colIndex) {
+    setGameTurns((prevTurns) => {
+      let currentPlayer;
+
+      if (prevTurns.length > 0) {
+        if (prevTurns[0].player === "X") {
+          currentPlayer = "O";
+        } else {
+          currentPlayer = "X";
+        }
+      } else {
+        currentPlayer = "X";
+      }
+      const newTurn = {
+        player: currentPlayer,
+        square: { row: rowIndex, col: colIndex },
+      };
+
+      return [newTurn, ...prevTurns];
+    });
 
     setActivePlayer((currentPlayer) => (currentPlayer === "X" ? "O" : "X"));
   }
+
   return (
     <>
       <BackgroundAnimation />
@@ -40,7 +56,7 @@ function App() {
           </ol>
           <TicTacToeBoard
             onSelectSquare={handleSelectSquare}
-            activePlayer={activePlayer}
+            turns={gameTurns}
           />
         </div>
         <div id="logs">
