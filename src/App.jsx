@@ -2,12 +2,19 @@ import "./App.scss";
 import Player from "./components/Player";
 import BackgroundAnimation from "./components/BackgroundAnimation";
 import TicTacToeBoard from "./components/TicTacToeBoard";
+import Log from "./components/Log";
 import { useState } from "react";
 
 function App() {
   const [activePlayer, setActivePlayer] = useState("X");
+  const [gameTurns, setGameTurns] = useState([]);
 
-  function handleSelectSquare() {
+  function handleSelectSquare(rowIndex, cellIndex) {
+    setGameTurns((prevTurns) => [
+      ...prevTurns,
+      { player: activePlayer, row: rowIndex, cell: cellIndex },
+    ]);
+
     setActivePlayer((currentPlayer) => (currentPlayer === "X" ? "O" : "X"));
   }
   return (
@@ -36,7 +43,9 @@ function App() {
             activePlayer={activePlayer}
           />
         </div>
-        <p>Logi z gry</p>
+        <div id="logs">
+          <Log gameTurns={gameTurns} />
+        </div>
       </main>
     </>
   );

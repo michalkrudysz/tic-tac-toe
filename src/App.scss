@@ -40,8 +40,9 @@ main {
   align-items: center;
   font-family: "ContoBold", sans-serif;
   color: #2c1b07;
-
+  overflow: hidden;
   #game {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -209,6 +210,24 @@ main {
       li:last-child {
         margin-bottom: 0;
       }
+    }
+  }
+  #logs {
+    height: 100%;
+    width: 20%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #665e81;
+    border-left: 3px solid #464058;
+    overflow: hidden;
+    text-align: center;
+    h2 {
+      margin-top: 20%;
+      margin-bottom: 5%;
+    }
+    li {
+      margin-top: 1%;
     }
   }
 }

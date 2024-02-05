@@ -14,7 +14,7 @@ export default function TicTacToeBoard({ onSelectSquare, activePlayer }) {
     if (updatedTicTacToeBoard[rowIndex][cellIndex] === null) {
       updatedTicTacToeBoard[rowIndex][cellIndex] = activePlayer;
       setTicTacToeBoard(updatedTicTacToeBoard);
-      onSelectSquare();
+      onSelectSquare(rowIndex, cellIndex);
     }
   }
 
