@@ -4,6 +4,13 @@ import BackgroundAnimation from "./components/BackgroundAnimation";
 import TicTacToeBoard from "./components/TicTacToeBoard";
 import Log from "./components/Log";
 import { useState } from "react";
+import { WINNING_COMBINATIONS } from "./winning-combinations.js";
+
+const initialTicTacToeBoard = [
+  [null, null, null],
+  [null, null, null],
+  [null, null, null],
+];
 
 function deriveActivePlayer(gameTurns) {
   let currentPlayer = "X";
@@ -19,6 +26,28 @@ function App() {
 
   const activePlayer = deriveActivePlayer(gameTurns);
 
+  let gameBoard = initialTicTacToeBoard;
+  for (const turn of gameTurns) {
+    const { square, player } = turn;
+    const { row, col } = square;
+    gameBoard[row][col] = player;
+  }
+
+  let winner = null;
+
+  for (const combination of WINNING_COMBINATIONS) {
+    const firstSquare = gameBoard[combination[0].row][combination[0].column];
+    const secondSquare = gameBoard[combination[1].row][combination[1].column];
+    const thirdSquare = gameBoard[combination[2].row][combination[2].column];
+
+    if (
+      firstSquare &&
+      firstSquare === secondSquare &&
+      firstSquare === thirdSquare
+    ) {
+      winner = firstSquare;
+    }
+  }
   function handleSelectSquare(rowIndex, colIndex) {
     setGameTurns((prevTurns) => {
       let currentPlayer = deriveActivePlayer(prevTurns);
@@ -51,10 +80,11 @@ function App() {
                 isActivePlayer={activePlayer === "O"}
               />
             </li>
-          </ol>
+          </ol>{" "}
+          {winner && <p>Wygrałeś {winner}!</p>}
           <TicTacToeBoard
             onSelectSquare={handleSelectSquare}
-            turns={gameTurns}
+            board={gameBoard}
           />
         </div>
         <div id="logs">

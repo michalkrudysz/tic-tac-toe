@@ -1,19 +1,7 @@
-export default function TicTacToeBoard({ onSelectSquare, turns }) {
-  const initialTicTacToeBoard = [
-    [null, null, null],
-    [null, null, null],
-    [null, null, null],
-  ];
-
-  for (const turn of turns) {
-    const { square, player } = turn;
-    const { row, col } = square;
-    initialTicTacToeBoard[row][col] = player;
-  }
-
+export default function TicTacToeBoard({ onSelectSquare, board }) {
   return (
     <ol id="tic-tac-toe-board">
-      {initialTicTacToeBoard.map((row, rowIndex) => (
+      {board.map((row, rowIndex) => (
         <li key={rowIndex}>
           <ol>
             {row.map((cell, cellIndex) => {
