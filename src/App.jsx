@@ -5,32 +5,30 @@ import TicTacToeBoard from "./components/TicTacToeBoard";
 import Log from "./components/Log";
 import { useState } from "react";
 
+function deriveActivePlayer(gameTurns) {
+  let currentPlayer = "X";
+
+  if (gameTurns.length > 0 && gameTurns[0].player === "X") {
+    currentPlayer = "O";
+  }
+  return currentPlayer;
+}
+
 function App() {
   const [gameTurns, setGameTurns] = useState([]);
-  const [activePlayer, setActivePlayer] = useState("X");
+
+  const activePlayer = deriveActivePlayer(gameTurns);
 
   function handleSelectSquare(rowIndex, colIndex) {
     setGameTurns((prevTurns) => {
-      let currentPlayer;
+      let currentPlayer = deriveActivePlayer(prevTurns);
+      const newTurn = [
+        { square: { row: rowIndex, col: colIndex }, player: currentPlayer },
+        ...prevTurns,
+      ];
 
-      if (prevTurns.length > 0) {
-        if (prevTurns[0].player === "X") {
-          currentPlayer = "O";
-        } else {
-          currentPlayer = "X";
-        }
-      } else {
-        currentPlayer = "X";
-      }
-      const newTurn = {
-        player: currentPlayer,
-        square: { row: rowIndex, col: colIndex },
-      };
-
-      return [newTurn, ...prevTurns];
+      return newTurn;
     });
-
-    setActivePlayer((currentPlayer) => (currentPlayer === "X" ? "O" : "X"));
   }
 
   return (
