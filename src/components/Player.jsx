@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Player({ playerName, playerSymbol, isActivePlayer }) {
+function Player({ playerName, playerSymbol, isActivePlayer, onNameChange }) {
   const [isEditing, setIsEditing] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const [editableName, setEditableName] = useState(playerName);
@@ -8,6 +8,9 @@ function Player({ playerName, playerSymbol, isActivePlayer }) {
   function handleEditClick() {
     setIsEditing((prev) => !prev);
     setIsActive((prev) => !prev);
+    if (isEditing) {
+      onNameChange(editableName);
+    }
   }
 
   let player = <span className="player-name">{editableName}</span>;
@@ -19,7 +22,9 @@ function Player({ playerName, playerSymbol, isActivePlayer }) {
         value={editableName}
         onChange={(e) => setEditableName(e.target.value)}
         onKeyDown={(e) => {
-          if (e.key === "Enter") handleEditClick();
+          if (e.key === "Enter") {
+            handleEditClick();
+          }
         }}
       />
     );
