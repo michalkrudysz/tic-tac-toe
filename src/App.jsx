@@ -5,6 +5,7 @@ import TicTacToeBoard from "./components/TicTacToeBoard";
 import Log from "./components/Log";
 import { useState } from "react";
 import { WINNING_COMBINATIONS } from "./winning-combinations.js";
+import GameOver from "./components/GameOver";
 
 const initialTicTacToeBoard = [
   [null, null, null],
@@ -24,6 +25,10 @@ function deriveActivePlayer(gameTurns) {
 function App() {
   const [gameTurns, setGameTurns] = useState([]);
 
+  function restartGame() {
+    setGameTurns([]);
+  }
+
   const activePlayer = deriveActivePlayer(gameTurns);
 
   let gameBoard = initialTicTacToeBoard;
@@ -34,6 +39,7 @@ function App() {
   }
 
   let winner = null;
+  const hasDraw = gameTurns.length === 9 && !winner;
 
   for (const combination of WINNING_COMBINATIONS) {
     const firstSquare = gameBoard[combination[0].row][combination[0].column];
@@ -48,6 +54,7 @@ function App() {
       winner = firstSquare;
     }
   }
+
   function handleSelectSquare(rowIndex, colIndex) {
     setGameTurns((prevTurns) => {
       let currentPlayer = deriveActivePlayer(prevTurns);
@@ -81,7 +88,9 @@ function App() {
               />
             </li>
           </ol>{" "}
-          {winner && <p>Wygrałeś {winner}!</p>}
+          {(winner || hasDraw) && (
+            <GameOver onRestart={restartGame} winner={winner} />
+          )}
           <TicTacToeBoard
             onSelectSquare={handleSelectSquare}
             board={gameBoard}
