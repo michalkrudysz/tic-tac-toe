@@ -16,7 +16,6 @@ const INITIAL_TIC_TAC_TOE_BOARD = [
 function deriveActivePlayer(gameTurns) {
   return gameTurns.length % 2 === 0 ? "X" : "O";
 }
-
 function deriveWinner(gameBoard, players) {
   let winner = null;
   for (const combination of WINNING_COMBINATIONS) {
