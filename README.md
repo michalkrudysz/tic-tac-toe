@@ -23,15 +23,12 @@ This Tic-Tac-Toe game is crafted using React and features a dynamic background w
 
 ### Home Page
 
-"Main page, without any interactions" ![Screenshot located at docs/assets/1.png](docs/assets/1.png)
-
+![Screenshot located at docs/assets/1.png](docs/assets/1.png)
 ### Custom Player Names and Board
-
-"Visible customized player names, symbols on the board, and game log" ![Screenshot located at docs/assets/2.png](docs/assets/2.png)
+![Screenshot located at docs/assets/2.png](docs/assets/2.png)
 
 ### Finished Game
-
-"Display of the winner and the option to restart the game" ![Screenshot located at docs/assets/3.png](docs/assets/3.png)
+![Screenshot located at docs/assets/3.png](docs/assets/3.png)
 
 ## Pre-installation Requirements
 
