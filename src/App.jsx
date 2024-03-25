@@ -7,23 +7,16 @@ import { useState } from "react";
 import { WINNING_COMBINATIONS } from "./winning-combinations.js";
 import GameOver from "./components/GameOver";
 
-// Zaktualizowana nazwa stałej dla czytelności
 const INITIAL_TIC_TAC_TOE_BOARD = [
   [null, null, null],
   [null, null, null],
   [null, null, null],
 ];
 
-// Funkcja pomocnicza do określenia aktywnego gracza
 function deriveActivePlayer(gameTurns) {
-  let currentPlayer = "X";
-  if (gameTurns.length > 0 && gameTurns[0].player === "X") {
-    currentPlayer = "O";
-  }
-  return currentPlayer;
+  return gameTurns.length % 2 === 0 ? "X" : "O";
 }
 
-// Funkcja pomocnicza do określania zwycięzcy
 function deriveWinner(gameBoard, players) {
   let winner = null;
   for (const combination of WINNING_COMBINATIONS) {
@@ -40,7 +33,6 @@ function deriveWinner(gameBoard, players) {
   return winner ? players[winner] : null;
 }
 
-// Funkcja pomocnicza do wyprowadzenia planszy gry
 function deriveGameBoard(gameTurns) {
   let gameBoard = INITIAL_TIC_TAC_TOE_BOARD.map((row) => [...row]);
   for (const turn of gameTurns) {
